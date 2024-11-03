@@ -1,0 +1,16 @@
+.diff-extract-button {
+  margin-left: 8px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #24292f;
+  background-color: #f6f8fa;
+  border: 1px solid #1b1f2426;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.diff-extract-button:hover {
+  background-color: #f3f4f6;
+}
