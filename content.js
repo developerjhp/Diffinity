@@ -8,14 +8,20 @@ function addDiffButton() {
   buttonGroup.appendChild(button);
 
   button.addEventListener("click", () => {
-    // Retrieve stored  language settings
     chrome.storage.sync.get(["language"], (data) => {
       const language = data.language || "en";
+      const title = document
+        .querySelector(".js-issue-title")
+        ?.textContent.trim();
+      const descriptionElement = document.querySelector(".js-comment-body");
+      const description = descriptionElement
+        ? descriptionElement.textContent.trim()
+        : "";
 
-      // Construct the .diff URL
       const baseUrl = window.location.href.match(
         /https:\/\/github\.com\/[^/]+\/[^/]+\/pull\/\d+/
       );
+
       if (baseUrl) {
         const diffUrl = `${baseUrl[0]}.diff`;
 
@@ -23,7 +29,9 @@ function addDiffButton() {
           { type: "fetchDiff", url: diffUrl },
           (response) => {
             if (response && response.success && response.data) {
-              const combinedText = `Answer in this language: ${language}\n\n${response.data}`;
+              const combinedText = `PR Title: ${title}\n\n${
+                description ? `PR Description: ${description}\n\n` : ""
+              }Review Language: ${language}\n\nDiff:\n${response.data}`;
               showButtonSuccess(button);
               chrome.runtime.sendMessage({
                 type: "openChatGPT",
