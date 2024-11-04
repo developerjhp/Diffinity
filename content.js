@@ -46,7 +46,7 @@ function addDiffButton() {
 }
 
 function showButtonSuccess(button) {
-  button.textContent = "Copied!";
+  button.textContent = "Diffinity SUCCESS!";
   button.style.backgroundColor = "#2da44e";
   button.style.color = "white";
   setTimeout(() => {
@@ -57,7 +57,7 @@ function showButtonSuccess(button) {
 }
 
 function showButtonError(button) {
-  button.textContent = "Copy Failed";
+  button.textContent = "Diffinity Failed";
   button.style.backgroundColor = "#cf222e";
   button.style.color = "white";
   setTimeout(() => {
