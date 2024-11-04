@@ -20,7 +20,7 @@ chrome.storage.local.get("copiedText", (result) => {
               sendButton.click();
               chrome.storage.local.remove("copiedText");
             } else {
-              console.error("Cannot find the send button");
+              console.log("Cannot find the send button");
             }
           }, 500);
         } catch (error) {
