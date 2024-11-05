@@ -29,9 +29,10 @@ function addDiffButton() {
           { type: "fetchDiff", url: diffUrl },
           (response) => {
             if (response && response.success && response.data) {
-              const combinedText = `PR Title: ${title}\n\n${
-                description ? `PR Description: ${description}\n\n` : ""
-              }Review Language: ${language}\n\nDiff:\n${response.data}`;
+              const combinedText = `Please review this PR in ${language} language. This review must be provided in ${language}. PR Title: ${title}\n\n${
+                description ? `PR Description: ${description}` : ""
+              } Diff:${response.data}`;
+
               showButtonSuccess(button);
               chrome.runtime.sendMessage({
                 type: "openChatGPT",
